@@ -1,0 +1,30 @@
+.SkeletonElement {
+  overflow: hidden;
+  position: relative;
+  background-color: #F7F7F7;
+}
+
+.gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-image: linear-gradient(90deg, #F7F7F7 0%, #FDFDFD 50%, #F7F7F7 100%);
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  animation: slideRight 1.7s infinite linear;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-105%);
+  }
+  75% {
+    transform: translateX(205%);
+  }
+  100% {
+    transform: translateX(205%);
+  }
+}
