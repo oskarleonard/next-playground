@@ -1,6 +1,5 @@
 import { useInfiniteQuery } from 'react-query';
 import { fetchTransactions } from 'connectivity/lisk/transactions/api.lisk.transactions';
-import { minutes } from 'shared/utils/generalUtils/generalUtils';
 
 export const QUERY_KEY_TRANSACTIONS = 'TRANSACTIONS';
 
@@ -14,9 +13,9 @@ export function useTransactions(addressId) {
   return useInfiniteQuery(queryKey, fetchTransactions, {
     keepPreviousData: true,
     getNextPageParam: (lastPage) => {
-      const hasNextPage = lastPage.meta.offset < lastPage.meta.total;
-      if (hasNextPage) {
-        return lastPage.meta.offset + 10;
+      const nextOffset = lastPage.meta.offset + 10;
+      if (nextOffset < lastPage.meta.total) {
+        return nextOffset;
       }
       return undefined;
     },

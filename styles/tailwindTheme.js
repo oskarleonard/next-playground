@@ -43,6 +43,7 @@ const COLORS = {
   jewel: '#12652d',
   blue: '#2f5eff',
   mercury: '#e6e6e6',
+  silver: '#adadad',
   concrete: '#f2f2f2',
   scorpion: '#595959',
   abbey: 'rgba(255, 255, 255, 0.8)',
