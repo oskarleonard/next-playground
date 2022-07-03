@@ -29,7 +29,5 @@ export async function prefetchTransactions(queryClient, addressId) {
   return queryClient.setQueryData(queryKey, (data) => ({
     ...data,
     pageParams: [null],
-    cacheTime: minutes(5),
-    staleTime: minutes(5),
   }));
 }
