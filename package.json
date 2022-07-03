@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3007",
-    "build": "next build && next export",
-    "nextBuild": "next build",
+    "build": "next build",
+    "nextBuildStatic": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
