@@ -13,9 +13,7 @@ function LiskPage() {
     <div className={'mt-88 container pb-96'}>
       <h1>LISK</h1>
       <div className={`flex items-center h-64`}>
-        <Link href={'/lisk/addresses'}>
-          Addresses
-        </Link>
+        <Link href={'/lisk/addresses'}>Addresses</Link>
       </div>
       <div>
         {blocks.map((block) => {
