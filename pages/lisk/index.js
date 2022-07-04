@@ -16,10 +16,12 @@ function LiskPage() {
         <Link href={'/lisk/addresses'}>Addresses</Link>
       </div>
       <div>
+        <h2 className={'text-18'}>Blocks refetching every third second</h2>
         {blocks.map((block) => {
+          const cutBlock = `${block.id.slice(0, 20)}...${block.id.slice(44)}`;
           return (
             <div key={block.id} className={`mt-12`}>
-              <h4>{block.id}</h4>
+              <h4>{cutBlock}</h4>
             </div>
           );
         })}

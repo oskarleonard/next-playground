@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Link from 'components/atoms/link/Link';
+import { getDateTime } from 'shared/utils/globalProjectUtils/dateUtils/dateUtils';
 import styles from './transactionRow.module.css';
 
 const TransactionRow = ({ className, transaction }) => {
@@ -9,7 +10,8 @@ const TransactionRow = ({ className, transaction }) => {
   function getFormattedTime() {
     const date = new Date('1970-01-01 00:00:00');
     date.setTime(date.getTime() + block.timestamp * 1000);
-    return date.toLocaleString('sv-SE');
+
+    return getDateTime(date);
   }
 
   function getFormattedAmount() {

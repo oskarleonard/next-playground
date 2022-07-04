@@ -5,10 +5,12 @@ import { prefetchTransactions } from 'connectivity/lisk/transactions/transaction
 import TransactionTable from 'components/models/transaction/transactionTable/TransactionRow';
 
 function PageLiskAddress({ addressId }) {
+  const cutAddress = `${addressId.slice(0, 14)}...${addressId.slice(28)}`;
+
   return (
     <div className={'mt-88 container pb-96'}>
       <MetaTags title={'Lisk Address'} />
-      <h1 className={'text-20 text-center'}>{addressId}</h1>
+      <h1 className={'text-20 text-center'}>{cutAddress}</h1>
       <TransactionTable className={'mt-48'} addressId={addressId} />
     </div>
   );

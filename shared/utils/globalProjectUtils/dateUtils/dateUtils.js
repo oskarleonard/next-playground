@@ -1,7 +1,3 @@
-export function getLocalDateTime(dateString) {
-  return new Date(dateString).toLocaleString('sv-SE');
-}
-
 const enforceDoubleDigitDate = (date) =>
   date?.getDate() < 10 ? `0${date?.getDate()}` : date?.getDate();
 
@@ -20,14 +16,23 @@ const monthsShort = [
   'dec',
 ];
 
-export function getDD_MMM_DD_MMM(startDate, endDate) {
-  const start = new Date(startDate);
-  const startDay = enforceDoubleDigitDate(start);
-  const startMonth = monthsShort[start.getMonth()];
+export function getDateTime(date) {
+  return `${getDate(date)} - ${getTime(date)}`;
+}
 
-  const end = new Date(endDate);
-  const endDay = enforceDoubleDigitDate(end);
-  const endMonth = monthsShort[end.getMonth()];
+export function getDate(date) {
+  const startDay = enforceDoubleDigitDate(date);
+  const startMonth = monthsShort[date.getMonth()];
 
-  return `${startDay} ${startMonth} - ${endDay} ${endMonth}`;
+  return `${date.getFullYear()} ${startMonth} ${startDay}`;
+}
+
+export function getTime(date) {
+  const formattedDate = new Date(date);
+  const minutes = formattedDate.getMinutes();
+  const hours = formattedDate.getHours();
+  const minEnsureDoubleDigit = minutes < 10 ? `0${minutes}` : minutes;
+  const hoursEnsureDoubleDigit = hours < 10 ? `0${hours}` : hours;
+
+  return `${hoursEnsureDoubleDigit}:${minEnsureDoubleDigit}`;
 }
