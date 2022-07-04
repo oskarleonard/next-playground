@@ -1,36 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { useTransactions } from 'connectivity/lisk/transactions/transactionsQueries';
-import { imArrayMerge } from 'shared/utils/generalUtils/immutableUtils/immutableUtils';
-import TableVerticalScroll from 'components/molecules/tableVerticalScroll/TableVerticalScroll';
+import TableHorizontalScroll from 'components/molecules/tableHorizontalScroll/TableHorizontalScroll';
 import TransactionRow from 'components/models/transaction/transactionRow/TransactionRow';
 import Button from 'components/atoms/button/Button';
+import { useIntervalEffect } from 'components/hooks/useInterval';
 
 function TransactionTable({ className, addressId }) {
-  const colWidths = [{ width: 200 }, { width: 400 }, { width: 200 }];
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useTransactions(addressId);
+  let [delay, setDelay] = useState(2000);
 
-  const page = data?.pages?.reduce((acc, item) => {
-    const merged = imArrayMerge(acc, item?.data);
-    return merged;
-  }, []);
+  const {
+    transactions,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch,
+    nrOfPages,
+  } = useTransactions(addressId);
+
+  useIntervalEffect(() => {
+    if (nrOfPages < 2) {
+      refetch();
+    } else {
+      setDelay(null);
+    }
+  }, delay);
 
   return (
-    <div className={classNames(className, 'flex flex-col items-center')}>
-      <TableVerticalScroll
-        colAttributes={colWidths}
+    <div className={classNames(className)}>
+      <TableHorizontalScroll
+        colAttributes={[{ width: 200 }, { width: 400 }, { width: 200 }]}
         tableHeaderCells={['Date', 'Recipient', 'Amount']}
       >
-        {page?.map((transaction) => {
+        {transactions?.map((transaction) => {
           return (
-            <TransactionRow
-              key={transaction?.block?.id}
-              transaction={transaction}
-            />
+            <TransactionRow key={transaction?.id} transaction={transaction} />
           );
         })}
-      </TableVerticalScroll>
+      </TableHorizontalScroll>
       <Button
         className={'mt-24'}
         onClick={() => fetchNextPage()}

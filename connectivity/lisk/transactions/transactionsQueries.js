@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from 'react-query';
 import { fetchTransactions } from 'connectivity/lisk/transactions/api.lisk.transactions';
+import { imArrayMerge } from 'shared/utils/generalUtils/immutableUtils/immutableUtils';
 
 export const QUERY_KEY_TRANSACTIONS = 'TRANSACTIONS';
 
@@ -10,7 +11,7 @@ const getQueryKey = (addressId) => {
 export function useTransactions(addressId) {
   const queryKey = getQueryKey(addressId);
 
-  return useInfiniteQuery(queryKey, fetchTransactions, {
+  const query = useInfiniteQuery(queryKey, fetchTransactions, {
     keepPreviousData: true,
     getNextPageParam: (lastPage) => {
       const nextOffset = lastPage.meta.offset + 10;
@@ -20,6 +21,21 @@ export function useTransactions(addressId) {
       return undefined;
     },
   });
+
+  const transactions = query?.data?.pages?.reduce((acc, item) => {
+    const merged = imArrayMerge(acc, item?.data);
+    return merged;
+  }, []);
+
+  return {
+    transactions,
+    isLoading: query.isLoading,
+    fetchNextPage: query.fetchNextPage,
+    hasNextPage: query.hasNextPage,
+    isFetchingNextPage: query.isFetchingNextPage,
+    refetch: query.refetch,
+    nrOfPages: query?.data?.pages?.length,
+  };
 }
 
 export async function prefetchTransactions(queryClient, addressId) {

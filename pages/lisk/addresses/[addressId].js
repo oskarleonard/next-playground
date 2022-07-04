@@ -8,9 +8,8 @@ function PageLiskAddress({ addressId }) {
   return (
     <div className={'mt-88 container pb-96'}>
       <MetaTags title={'Lisk Address'} />
-      <h1>PageLiskAddress</h1>
-      <h1>{addressId}</h1>
-      <TransactionTable className={'mt-98'} addressId={addressId} />
+      <h1 className={'text-20 text-center'}>{addressId}</h1>
+      <TransactionTable className={'mt-48'} addressId={addressId} />
     </div>
   );
 }

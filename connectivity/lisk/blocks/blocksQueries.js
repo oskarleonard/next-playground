@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query';
 import { fetchBlocks } from 'connectivity/lisk/blocks/api.lisk.blocks';
-import { minutes } from 'shared/utils/generalUtils/generalUtils';
 
 export const QUERY_KEY_BLOCKS = 'BLOCKS';
 
@@ -18,7 +17,5 @@ export async function prefetchBlocks(queryClient) {
   return queryClient.setQueryData(QUERY_KEY_BLOCKS, (data) => ({
     ...data,
     pageParams: [null],
-    cacheTime: minutes(5),
-    staleTime: minutes(5),
   }));
 }

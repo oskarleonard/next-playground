@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TableHead from 'components/molecules/tableHead/TableHead';
-import styles from './tableVerticalScroll.module.css';
+import styles from './tableHorizontalScroll.module.css';
 
-function TableVerticalScroll({
+function TableHorizontalScroll({
   className,
   tableClassName,
   sizeUnit = 'px',
@@ -38,7 +38,7 @@ function TableVerticalScroll({
   );
 }
 
-TableVerticalScroll.propTypes = {
+TableHorizontalScroll.propTypes = {
   className: PropTypes.string,
   tableClassName: PropTypes.string,
   sizeUnit: PropTypes.string,
@@ -61,4 +61,4 @@ TableVerticalScroll.propTypes = {
   ]),
 };
 
-export default TableVerticalScroll;
+export default TableHorizontalScroll;

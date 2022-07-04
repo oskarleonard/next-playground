@@ -11,7 +11,7 @@ function LiskPage() {
 
   return (
     <div className={'mt-88 container pb-96'}>
-      <h1>LISK</h1>
+      <h1 className={'text-20 text-center'}>Lisk</h1>
       <div className={`flex items-center h-64`}>
         <Link href={'/lisk/addresses'}>Addresses</Link>
       </div>
