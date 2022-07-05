@@ -3,13 +3,16 @@ import { fetchBlocks } from 'connectivity/lisk/blocks/api.lisk.blocks';
 
 export const QUERY_KEY_BLOCKS = 'BLOCKS';
 
-export function useBlocks() {
-  const { data } = useQuery(QUERY_KEY_BLOCKS, fetchBlocks, {
-    keepPreviousData: true,
-    refetchInterval: 3000,
+export function useBlocks({ refetchInterval, keepPreviousData = true } = {}) {
+  const { data, isLoading } = useQuery(QUERY_KEY_BLOCKS, fetchBlocks, {
+    keepPreviousData: keepPreviousData,
+    refetchInterval: refetchInterval,
   });
 
-  return { blocks: data.data };
+  return {
+    blocks: data?.data,
+    isLoading,
+  };
 }
 
 export async function prefetchBlocks(queryClient) {

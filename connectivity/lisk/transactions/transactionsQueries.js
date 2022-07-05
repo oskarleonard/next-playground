@@ -5,14 +5,18 @@ import { imArrayMerge } from 'shared/utils/generalUtils/immutableUtils/immutable
 export const QUERY_KEY_TRANSACTIONS = 'TRANSACTIONS';
 
 const getQueryKey = (addressId) => {
-  return [QUERY_KEY_TRANSACTIONS, addressId];
+  return [QUERY_KEY_TRANSACTIONS, addressId || null];
 };
 
-export function useTransactions(addressId) {
+export function useTransactions({
+  addressId,
+  refetchInterval,
+  keepPreviousData = true,
+} = {}) {
   const queryKey = getQueryKey(addressId);
 
   const query = useInfiniteQuery(queryKey, fetchTransactions, {
-    keepPreviousData: true,
+    keepPreviousData: keepPreviousData,
     getNextPageParam: (lastPage) => {
       const nextOffset = lastPage.meta.offset + 10;
       if (nextOffset < lastPage.meta.total) {
@@ -20,6 +24,7 @@ export function useTransactions(addressId) {
       }
       return undefined;
     },
+    refetchInterval: refetchInterval,
   });
 
   const transactions = query?.data?.pages?.reduce((acc, item) => {

@@ -17,7 +17,7 @@ function TransactionTable({ className, addressId }) {
     isFetchingNextPage,
     refetch,
     nrOfPages,
-  } = useTransactions(addressId);
+  } = useTransactions({ addressId });
 
   useIntervalEffect(() => {
     if (nrOfPages < 2) {
