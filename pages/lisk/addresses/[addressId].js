@@ -5,7 +5,7 @@ import { prefetchTransactions } from 'connectivity/lisk/transactions/transaction
 import TransactionTable from 'components/models/transaction/transactionTable/TransactionRow';
 
 function PageLiskAddress({ addressId }) {
-  const cutAddress = `${addressId.slice(0, 14)}...${addressId.slice(28)}`;
+  const cutAddress = `${addressId?.slice(0, 14)}...${addressId?.slice(28)}`;
 
   return (
     <div className={'mt-88 container pb-96'}>
