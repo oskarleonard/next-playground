@@ -7,6 +7,8 @@ export function replaceMiddlePartOfString(
   nrOfCharsToKeep,
   replaceText = '...'
 ) {
+  if (!string) return '';
+
   const textToReplace = string.substring(
     nrOfCharsToKeep,
     string.length - nrOfCharsToKeep
