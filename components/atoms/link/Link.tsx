@@ -2,9 +2,15 @@ import { UrlObject } from 'url';
 import { default as NextLink } from 'next/link';
 import classNames from 'classnames/bind';
 
-const Link = ({ className, children, onClick, ...rest }: LinkProps) => {
+const Link = ({
+  className,
+  children,
+  onClick,
+  prefetch = false,
+  ...rest
+}: LinkProps) => {
   return (
-    <NextLink {...rest}>
+    <NextLink prefetch={prefetch} {...rest}>
       <a className={classNames(className, 'underline')} onClick={onClick}>
         {children}
       </a>
