@@ -4,8 +4,8 @@ import MetaTags from 'components/molecules/metaTags/MetaTags';
 import { prefetchTransactions } from 'connectivity/lisk/transactions/transactionsQueries';
 import TransactionTable from 'components/models/transaction/transactionTable/TransactionRow';
 
-function PageLiskAddress({ addressId }) {
-  const cutAddress = `${addressId?.slice(0, 14)}...${addressId?.slice(28)}`;
+function PageLiskAddress({ addressId = '' }) {
+  const cutAddress = `${addressId.slice(0, 14)}...${addressId.slice(28)}`;
 
   return (
     <div className={'mt-88 container pb-96'}>
@@ -19,7 +19,7 @@ function PageLiskAddress({ addressId }) {
 export default PageLiskAddress;
 
 export async function getStaticPaths() {
-  return { paths: [], fallback: true };
+  return { paths: [], fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
