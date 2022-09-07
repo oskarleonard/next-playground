@@ -1,0 +1,29 @@
+.selectContainer {
+  padding-right: 10px;
+  border: 1px solid #d2d2d8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  background-color: transparent;
+  outline: none;
+  color: #000000;
+}
+
+.select:hover {
+  cursor: pointer;
+}
+
+.selectContainer:hover {
+  border: 1px solid #8e8cee;
+}
+
+.selectContainer:hover[data-disabled=true] {
+  border: 1px solid #d2d2d8;
+}
+
+.select:disabled {
+  cursor: initial;
+}

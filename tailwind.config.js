@@ -4,7 +4,9 @@ const {
   COLORS,
   SCREENS,
   BORDER_RADIUS,
-} = require('./styles/tailwindTheme');
+  LINE_HEIGHTS,
+  COMPONENTS_TO_ADD,
+} = require('./styles/theme/tailwindTheme');
 
 module.exports = {
   content: [
@@ -15,50 +17,21 @@ module.exports = {
     preflight: false,
   },
   theme: {
-    boxShadow: {
-      md: '0 2px 16px 0 rgba(0, 0, 0, 0.16)',
+    fontFamily: {
+      'good-sans': ['Good Sans', 'sans-serif'],
     },
     spacing: getSpacings(),
     fontSize: getFontSizes(),
     screens: SCREENS,
+    lineHeight: LINE_HEIGHTS,
     borderRadius: BORDER_RADIUS,
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '8px',
-        lg: '16px',
-      },
-      screens: {
-        sm: '100%',
-        md: '100%',
-        lg: '1248px',
-        xl: '1248px',
-      },
+    extend: {
+      colors: COLORS,
     },
-    colors: COLORS,
   },
   plugins: [
     function ({ addComponents }) {
-      addComponents({
-        '.hCenterAbsolute': {
-          position: 'absolute',
-          transform: 'translate(-50%, -50%)',
-          left: '50%',
-          right: '50%',
-        },
-        '.imgOptimizeContrast': {
-          ['image-rendering']: '-webkit-optimize-contrast',
-        },
-        '.ellipsifyTwoLines': {
-          overflow: 'hidden',
-          'text-overflow': 'ellipsis',
-          display: '-webkit-box',
-          '-webkit-line-clamp': '2',
-          'line-clamp': '2',
-          '-webkit-box-orient': 'vertical',
-        },
-      });
+      addComponents(COMPONENTS_TO_ADD);
     },
   ],
 };

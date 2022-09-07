@@ -1,0 +1,7 @@
+.transactionTable th, .transactionTable td {
+  min-width: 140px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

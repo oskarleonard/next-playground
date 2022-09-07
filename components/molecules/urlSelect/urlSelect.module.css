@@ -1,0 +1,10 @@
+.selectSortOrder {
+  min-width: 162px;
+  padding-right: 6px;
+}
+
+.selectSortOrder:hover {
+  cursor: pointer;
+  border: 1px solid #8e8cee;
+}
+

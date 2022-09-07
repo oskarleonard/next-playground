@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './SkeletonElement.module.css';
+import styles from './skeletonElement.module.css';
 
 const SkeletonElement = ({
   className,
@@ -8,7 +8,7 @@ const SkeletonElement = ({
   animationDelay,
   animated,
   style,
-}) => {
+}: SkeletonElementProps) => {
   const paddingBottom = aspectRatio && `${100 / aspectRatio}%`;
   const delay = animationDelay && `${animationDelay}ms`;
 
@@ -22,6 +22,14 @@ const SkeletonElement = ({
       )}
     </div>
   );
+};
+
+type SkeletonElementProps = {
+  className?: string;
+  aspectRatio?: number;
+  animationDelay?: string;
+  animated?: boolean;
+  style?: React.CSSProperties;
 };
 
 export default SkeletonElement;

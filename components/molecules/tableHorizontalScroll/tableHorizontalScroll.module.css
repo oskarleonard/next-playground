@@ -1,8 +1,0 @@
-.tableVerticalScroll {
-  overflow-x: auto;
-}
-
-.table {
-  border-collapse: collapse;
-  table-layout: fixed;
-}

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { useTransactions } from 'connectivity/lisk/transactions/transactionsQueries';
-import TableHorizontalScroll from 'components/molecules/tableHorizontalScroll/TableHorizontalScroll';
 import TransactionRow from 'components/models/transaction/transactionRow/TransactionRow';
 import Button from 'components/atoms/button/Button';
 import { useIntervalEffect } from 'components/hooks/useInterval';
+import Table from 'components/molecules/table/Table';
+import styles from './transactionTable.module.css';
 
 function TransactionTable({ className, addressId }) {
-  let [delay, setDelay] = useState(2000);
+  let [delay, setDelay] = useState(10000);
 
   const {
     transactions,
@@ -28,17 +29,22 @@ function TransactionTable({ className, addressId }) {
   }, delay);
 
   return (
-    <div className={classNames(className)}>
-      <TableHorizontalScroll
-        colAttributes={[{ width: 200 }, { width: 400 }, { width: 200 }]}
-        tableHeaderCells={['Date', 'Recipient', 'Amount']}
-      >
-        {transactions?.map((transaction) => {
-          return (
-            <TransactionRow key={transaction?.id} transaction={transaction} />
-          );
-        })}
-      </TableHorizontalScroll>
+    <div className={classNames(className, styles.transactionTable)}>
+      <Table headerCells={['Date', 'Recipient', 'Amount']}>
+        {transactions ? (
+          transactions?.map((transaction) => {
+            return (
+              <TransactionRow key={transaction?.id} transaction={transaction} />
+            );
+          })
+        ) : (
+          <tr
+            className={'flex justify-center items-center h-80 text-xl w-full'}
+          >
+            <td>No results</td>
+          </tr>
+        )}
+      </Table>
       <Button
         className={'mt-24'}
         onClick={() => fetchNextPage()}

@@ -8,6 +8,7 @@ import Navbar from 'components/molecules/navbars/navbar/Navbar';
 import Footer from 'components/molecules/footer/Footer';
 import MetaTags from 'components/molecules/metaTags/MetaTags';
 import { minutes } from 'shared/utils/generalUtils/generalUtils';
+import useScrollRestoration from 'components/hooks/useScrollRestoration/useScrollRestoration';
 import styles from '../styles/app.module.css';
 
 const queryClient = new QueryClient({
@@ -21,11 +22,11 @@ const queryClient = new QueryClient({
   },
 });
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   return (
     <ErrorBoundary>
       <CookiesProvider>
-        <AppFrame Component={Component} pageProps={pageProps} />
+        <AppFrame Component={Component} pageProps={pageProps} router={router} />
       </CookiesProvider>
     </ErrorBoundary>
   );
@@ -33,7 +34,9 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 
-const AppFrame = ({ Component, pageProps }) => {
+const AppFrame = ({ Component, pageProps, router }) => {
+  useScrollRestoration(router);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps?.dehydratedState}>

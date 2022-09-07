@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Link from 'components/atoms/link/Link';
 import { getDateTime } from 'shared/utils/globalProjectUtils/dateUtils/dateUtils';
-import styles from './transactionRow.module.css';
+import Td from 'components/atoms/td/Td';
 
 const TransactionRow = ({ className, transaction }) => {
   const { asset, block, moduleAssetName } = transaction;
@@ -31,10 +31,10 @@ const TransactionRow = ({ className, transaction }) => {
   }
 
   return (
-    <tr className={classNames(styles.tr, className)}>
-      <td className={classNames(styles.td)}>{getFormattedTime()}</td>
-      <td className={classNames(styles.td)}>{getFormattedRecipient()}</td>
-      <td className={classNames(styles.td)}>{getFormattedAmount()}</td>
+    <tr className={classNames(className, 'flex border-b')}>
+      <Td>{getFormattedTime()}</Td>
+      <Td>{getFormattedRecipient()}</Td>
+      <Td>{getFormattedAmount()}</Td>
     </tr>
   );
 };

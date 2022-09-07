@@ -22,10 +22,10 @@ export const Input = React.forwardRef(
       onClick,
       regexAllowOnly,
       ...rest
-    },
+    }: any,
     forwardRef
   ) => {
-    function handleChange(event) {
+    function handleChange(event: any) {
       if (regexAllowOnly) {
         const value = event.target.value;
         if (value === '') {

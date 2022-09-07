@@ -1,7 +1,5 @@
 .inputCommon {
   padding: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
 }
 
 .inputCommon:active,
@@ -16,12 +14,5 @@
 .inputCommon:-webkit-autofill {
   -webkit-text-fill-color: black;
   -webkit-box-shadow: 0 0 0 100px white inset;
-  caret-color: black;
   transition: background-color 5000s ease-in-out 0s;
-}
-
-.inputLight {
-  composes: inputCommon;
-  background-color: white;
-  color: black;
 }
