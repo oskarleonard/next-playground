@@ -4,8 +4,6 @@ import { CookiesProvider } from 'react-cookie';
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import ErrorBoundary from 'components/atoms/errorBoundary/ErrorBoundary';
-import Navbar from 'components/molecules/navbars/navbar/Navbar';
-import Footer from 'components/molecules/footer/Footer';
 import MetaTags from 'components/molecules/metaTags/MetaTags';
 import { minutes } from 'shared/utils/generalUtils/generalUtils';
 import useScrollRestoration from 'components/hooks/useScrollRestoration/useScrollRestoration';
@@ -47,12 +45,10 @@ const AppFrame = ({ Component, pageProps, router }) => {
           }
         />
         <div className={styles.main}>
-          <Navbar />
-          <main>
+          <main className={'h-full'}>
             <Component {...pageProps} />
           </main>
         </div>
-        <Footer />
         <ReactQueryDevtools initialIsOpen={false} />
       </Hydrate>
     </QueryClientProvider>

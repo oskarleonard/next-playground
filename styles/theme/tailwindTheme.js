@@ -41,6 +41,7 @@ const COLORS = {
   transparent: '#FFFFFF00',
   white: '#ffffff',
   black: '#1a1a1a',
+  red: 'red',
 };
 
 const LINE_HEIGHTS = {

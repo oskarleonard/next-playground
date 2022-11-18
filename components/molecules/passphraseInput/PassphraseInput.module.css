@@ -1,0 +1,31 @@
+.wrapper {
+  margin: 0;
+  position: relative;
+}
+
+.inputs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-radius: 3px;
+  padding: 0px 24px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.footerContent {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  bottom: -32px;
+  right: 0;
+}
+
+.errorMessage {
+  width: auto;
+}
+
+.showPassphrase {
+
+}

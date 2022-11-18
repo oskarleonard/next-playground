@@ -6,7 +6,8 @@ import { prefetchTransactions } from 'connectivity/lisk/transactions/transaction
 import BlocksListing from 'components/models/blocks/blocksListing/BlocksListing';
 import TransactionsListing from 'components/models/transaction/transactionListing/TransactionsListing';
 
-function LiskPage() {
+function LiskPage(props) {
+  console.log('props ,', props);
   return (
     <div className={'mt-88 container pb-96'}>
       <h1 className={'text-20 text-center'}>Lisk</h1>

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
 export const getButtonStyles = (hasIcon?: boolean) =>
-  `inline-flex text-black border text-16 py-8 bg-transparent items-center hover:border-silver ${
-    hasIcon ? 'px-24' : 'px-42'
+  `inline-flex text-black text-12 py-8 bg-transparent items-center hover:border-silver ${
+    hasIcon ? 'px-12' : 'px-24'
   }`;
 
 const Button = ({

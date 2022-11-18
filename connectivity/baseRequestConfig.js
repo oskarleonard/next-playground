@@ -23,7 +23,7 @@ function getBaseRequestConfig({
   return config;
 }
 
-const API_URL = process.env.API_URL;
-const PUBLIC_API = `${API_URL}/api/v2`;
+const API_URL = 'http://165.227.246.146:9901';
+const PUBLIC_API = `${API_URL}/api/v3`;
 
 export { getBaseRequestConfig, PUBLIC_API };

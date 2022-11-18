@@ -1,0 +1,18 @@
+.card {
+  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 27px hsl(240deg 7% 84% / 32%);
+}
+
+.paginationSelected {
+  box-sizing: content-box;
+  color: black;
+  border-bottom: 2px solid black;
+  background-color: initial;
+  min-width: 22px;
+}
+
+.policiesFilterOptionsProps {
+
+}

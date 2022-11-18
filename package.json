@@ -13,6 +13,8 @@
     "@headlessui/react": "^1.5.0",
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.0",
+    "bitcore-lib": "^8.25.40",
+    "bitcore-mnemonic": "^8.25.40",
     "classnames": "^2.3.1",
     "next": "12.0.8",
     "next-cookies": "^2.0.3",

@@ -1,0 +1,20 @@
+.td {
+  padding: 12px 10px;
+}
+
+.tr {
+  text-align: left;
+  border-bottom: 1px solid gray;
+  border-left: 8px solid transparent;
+}
+
+.tr:hover {
+  background-color: rgba(155, 155, 155, 0.05);
+  border-left-color: darkred;
+}
+
+.profileImage {
+  overflow: hidden;
+  border: 1px solid gray;
+  border-radius: 50%;
+}
